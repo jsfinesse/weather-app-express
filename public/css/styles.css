@@ -1,12 +1,57 @@
-h1 {
-    color: cadetblue;
-}
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
 
 body {
-    background-color: rgb(68, 68, 68);
     color: white;
+    background-color: #333333;
+    font-family: "Nunito", sans-serif;
+    max-width: 650px;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex-grow: 1;
+}
+
+header {
+    margin-top: 16px;
+    margin-bottom: 48px;
+}
+
+footer {
+    width: 100%;
+    color: #eeeeee;
+    border-top: 2px solid #eeeeee;
+    margin-top: 16px;
+    padding: 16px 0;
+}
+
+h1 {
+    font-size: 64px;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+header a {
+    color: #eeeeee;
+    margin-right: 16px;
+    text-decoration: none;
+}
+
+header ul {
+    padding: 0 5px;
+
+    display: flex;
+    justify-content: space-evenly;
 }
 
 img {
     width: 256px;
+}
+
+.about {
+    text-align: center;
 }
