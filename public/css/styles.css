@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
 
 body {
-    color: white;
-    background-color: #333333;
+    color: #9cd3d3;
+    background-color: #2b4353;
     font-family: "Nunito", sans-serif;
     max-width: 650px;
     margin: 0 auto;
@@ -23,8 +23,8 @@ header {
 
 footer {
     width: 100%;
-    color: #eeeeee;
-    border-top: 2px solid #eeeeee;
+    color: #9cd3d3;
+    border-top: 2px solid #e8630a;
     margin-top: 16px;
     padding: 16px 0;
 }
@@ -36,7 +36,7 @@ h1 {
 }
 
 header a {
-    color: #eeeeee;
+    color: #e8630a;
     margin-right: 16px;
     text-decoration: none;
 }
@@ -52,6 +52,26 @@ img {
     width: 256px;
 }
 
+#weather-icon {
+    width: 64px;
+    user-select: none;
+}
+
 .about {
     text-align: center;
+}
+
+input {
+    border: 1px solid #e8630a;
+    border-radius: 8px;
+    padding: 8px;
+}
+
+button {
+    cursor: pointer;
+    border: 1px solid #e8630a;
+    border-radius: 8px;
+    background-color: #e8630a;
+    color: #2b4353;
+    padding: 8px;
 }
