@@ -11,18 +11,17 @@ form.addEventListener("submit", (e) => {
 
     messageOne.textContent = "Loading...";
     messageTwo.textContent = "";
+    weatherIcon.src = "/img/transparent.png";
 
-    fetch("/weather?searchTerm=" + searchTerm).then(
-        (response) => {
-            response.json().then((data) => {
-                if (data.error) {
-                    messageOne.textContent = data.error;
-                } else {
-                    messageOne.textContent = data.location;
-                    messageOne.textContent = data.forecast;
-                    weatherIcon.src = `${data.img}`;
-                }
-            });
-        }
-    );
+    fetch("/weather?searchTerm=" + searchTerm).then((response) => {
+        response.json().then((data) => {
+            if (data.error) {
+                messageOne.textContent = data.error;
+            } else {
+                messageOne.textContent = data.location;
+                messageOne.textContent = data.forecast;
+                weatherIcon.src = `${data.img}`;
+            }
+        });
+    });
 });
