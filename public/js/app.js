@@ -15,7 +15,12 @@ async function getLocation() {
 }
 
 async function showLocation() {
-    const position = await getLocation();
+    let position;
+    try {
+        position = await getLocation();
+    } catch (error) {
+        alert("Please allow location");
+    }
 
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
