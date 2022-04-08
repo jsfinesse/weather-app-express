@@ -4,10 +4,40 @@ const messageOne = document.querySelector("#message-one");
 const messageTwo = document.querySelector("#message-two");
 const weatherIcon = document.querySelector("#weather-icon");
 
-form.addEventListener("submit", (e) => {
+async function getLocation() {
+    if (navigator.geolocation) {
+        return new Promise((res, rej) => {
+            navigator.geolocation.getCurrentPosition(res, rej);
+        });
+    } else {
+        alert("Geolocation not supported by browser");
+    }
+}
+
+async function showLocation() {
+    const position = await getLocation();
+
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+
+    const geoApiUrl = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`;
+
+    const response = await fetch(geoApiUrl);
+    const data = await response.json();
+    searchTerm = data.locality;
+    return searchTerm;
+}
+
+form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const searchTerm = search.value;
+    let searchTerm;
+
+    if (clicked === "getLocation") {
+        searchTerm = await showLocation();
+    } else {
+        searchTerm = search.value;
+    }
 
     messageOne.textContent = "Loading...";
     messageTwo.textContent = "";
@@ -19,7 +49,7 @@ form.addEventListener("submit", (e) => {
                 messageOne.textContent = data.error;
             } else {
                 messageOne.textContent = data.location;
-                messageOne.textContent = data.forecast;
+                messageTwo.textContent = data.forecast;
                 weatherIcon.src = `${data.img}`;
             }
         });
